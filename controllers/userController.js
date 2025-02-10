@@ -67,8 +67,8 @@ export const login = async(req,res) => {
         )
 
 
-       if (user.status !== 'approved') {
-        return res.status(400).json({message:"Your account is still pending or has been rejected"})
+       if (user.status === 'pending') {
+        return res.status(400).json({message:"Your account is still pending. Please wait"})
        }
 
         return res.status(200).json({message:"Login successful", token, 
